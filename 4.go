@@ -23,15 +23,20 @@ func palindrome(x int) bool {
 
 func largest() {
 
+	var largest int
+
 	for i := 999; i > 100; i-- {
 		for j := 999; j > 100; j-- {
 			temp := j * i
 			if palindrome(temp) == true {
-				fmt.Println("These are the largest digits:  ", i, j)
-				return
+				if temp > largest {
+					largest = temp
+				}
 			}
 		}
 	}
+
+	fmt.Println("the largest is: ", largest)
 }
 
 func main() {
