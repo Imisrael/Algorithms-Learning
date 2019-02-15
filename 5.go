@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func lcm(x int) int {
+func loop(x int) int {
 
 	for i := 1; i < 21; i++ {
 		if x%i != 0 {
@@ -15,12 +15,12 @@ func lcm(x int) int {
 	return 1
 }
 
-func test(x int) int {
+func lcm(x int) int {
 
 	var smallest int
 
 	for i := x; i > 0; i-- {
-		if lcm(i) == 1 {
+		if loop(i) == 1 {
 			smallest = i
 		}
 	}
@@ -31,5 +31,5 @@ func test(x int) int {
 
 func main() {
 
-	fmt.Println("man, this really is what it's for: ", test(1000000000))
+	fmt.Println("Smallest Multiple: ", lcm(1000000000))
 }
