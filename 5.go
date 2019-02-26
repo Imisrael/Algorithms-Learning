@@ -19,9 +19,10 @@ func lcm(x int) int {
 
 	var smallest int
 
-	for i := x; i > 0; i-- {
+	for i := 21; i < x; i++ {
 		if loop(i) == 1 {
 			smallest = i
+			break
 		}
 	}
 

@@ -17,7 +17,6 @@ func fibonacci() int {
 
 	for b <= 4000000 {
 		if b%2 == 0 {
-			fmt.Println("b: ", b)
 			total += b
 		}
 		c = a + b
