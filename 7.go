@@ -20,7 +20,7 @@ func iteratePrime(x int) int {
 
 	var counter int
 
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < 100; i++ {
 		if isPrime(i) {
 			counter++
 			if counter == x {
