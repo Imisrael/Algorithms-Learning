@@ -31,21 +31,30 @@ func largestProd() int {
 
 	var largest int
 	n := len(grid)
+	var count int
 
 	for i := 0; i < n-3; i++ {
 		for j := 0; j < n-3; j++ {
-			temp := grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
-			tempp := grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
-			if temp > largest {
-				largest = temp
+			for k := 19; k > 3; k-- {
+				leftRight := grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
+				vertical := grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
+				diagRight := grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3]
+				diagLeft := grid[k][j] * grid[k-1][j+1] * grid[k-2][j+2] * grid[k-3][j+3]
+
+				switch {
+				case leftRight > largest:
+					largest = leftRight
+				case vertical > largest:
+					largest = vertical
+				case diagRight > largest:
+					largest = diagRight
+				case diagLeft > largest:
+					largest = diagLeft
+				}
 			}
 		}
 	}
-
-	//fmt.Println(grid[6][8] * grid[7][9] * grid[8][10] * grid[9][11])
-
 	return largest
-
 }
 
 func main() {
