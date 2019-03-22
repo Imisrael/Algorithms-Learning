@@ -29,9 +29,22 @@ func largestProd() int {
 		[]int{01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48},
 	}
 
-	fmt.Println(grid[0][0], grid[19][19])
+	var largest int
+	n := len(grid)
 
-	return 1
+	for i := 0; i < n-3; i++ {
+		for j := 0; j < n-3; j++ {
+			temp := grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
+			tempp := grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
+			if temp > largest {
+				largest = temp
+			}
+		}
+	}
+
+	//fmt.Println(grid[6][8] * grid[7][9] * grid[8][10] * grid[9][11])
+
+	return largest
 
 }
 
