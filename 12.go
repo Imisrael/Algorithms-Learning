@@ -2,29 +2,32 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
-func factor(x int) []int {
+func numOfDivisors(x int) float64 {
 
-	var result []int
+	var numOfFactors float64
+	var sqrt = math.Sqrt(float64(x))
 
-	for i := 1; i < x+1; i++ {
+	for i := 1; float64(i) <= sqrt; i++ {
 		if x%i == 0 {
-			result = append(result, i)
+			if float64(i) == sqrt {
+				numOfFactors++
+			} else {
+				numOfFactors += 2
+			}
 		}
 	}
-	return result
+	return numOfFactors
 }
 
 func triangleNum(x int) int {
 
-	var total int
+	x = x * (x + 1)
+	x /= 2
 
-	for i := 1; i < x+1; i++ {
-		total += i
-	}
-
-	return total
+	return x
 
 }
 
@@ -34,8 +37,9 @@ func main() {
 
 	for {
 		temp := triangleNum(i)
-		temp2 := factor(temp)
-		if len(temp2) > 500 {
+		temp2 := numOfDivisors(temp)
+		fmt.Println("temp: ", temp, "temp2: ", temp2)
+		if temp2 > 500 {
 			fmt.Println(temp)
 			return
 		}
