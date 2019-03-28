@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -34,7 +35,7 @@ import (
 func chunking(x string) []string {
 
 	strSlice := make([][]string, len(x)/50)
-	stringOfNum := make([]string, len(x)/50)
+	var stringOfNum []string
 
 	k := 0
 	for i := 0; i < len(x)/50; i++ {
@@ -48,15 +49,19 @@ func chunking(x string) []string {
 		}
 	}
 
-	fmt.Println(stringOfNum[100])
+	intSlice := make([]int64, len(stringOfNum))
 
-	intSlice := make([]int, len(stringOfNum))
+	for i := 0; i < 100; i++ {
+		var temp int64
+		temp, err := strconv.ParseInt(stringOfNum[i], 10, 64)
+		if err != nil {
+			fmt.Println("Err: ", err)
+		}
 
-	// for i := 0; i < 200; i++ {
-	// 	intSlice[i], _ = strconv.Atoi(stringOfNum[i : i+1])
-	// }
+		fmt.Println(temp)
+	}
 
-	fmt.Println("intSlice: ", len(intSlice))
+	fmt.Println("intSlice: ", intSlice)
 
 	// for i := 0; i < len(x); i++ {
 	// 	intSlice[i], + = strconv.Atoi(x[i:i+1])
